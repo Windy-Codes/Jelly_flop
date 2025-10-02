@@ -3,9 +3,9 @@ using UnityEngine;
 public class Damage : MonoBehaviour
 {
     public float damage = 0.5f;
-    public float knockbackForceX = 10f;  // horizontal force
-    public float knockbackForceY = 5f;   // vertical force
-    public float knockbackDuration = 0.2f;
+    public float knockbackForceX = 20f;  // horizontal force
+    public float knockbackForceY = 10f;   // vertical force
+    public float knockbackDuration = 0.3f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

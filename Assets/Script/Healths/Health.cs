@@ -6,6 +6,8 @@ public class Health : MonoBehaviour
 {
     public float health = 3f;
     public float maxHealth = 3f;
+    public Playermovement movement;
+    public GameObject panel;
 
     public void TakeDamage(float damage)
     {
@@ -13,7 +15,9 @@ public class Health : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy(gameObject); 
+            transform.rotation = Quaternion.Euler(0, 0, 90);
+            movement.enabled = false;
+            panel.SetActive(true);
         }
     }
 }
