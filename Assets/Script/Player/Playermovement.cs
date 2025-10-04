@@ -8,6 +8,7 @@ public class Playermovement : MonoBehaviour
     public float jump = 10f;
     public CapsuleCollider2D capsule;
     private SpriteRenderer sr;
+    public ParticleSystem dust;
 
     private float HorizontalInput;
     private int lastDirection = 0; // -1 for left, 1 for right
@@ -38,6 +39,8 @@ public class Playermovement : MonoBehaviour
     public GameObject afterimagePrefab;
     public float afterimageSpacing = 0.05f; // time between afterimages
     private float afterimageTimer;
+
+    
 
     void Start()
     {
@@ -97,9 +100,10 @@ public class Playermovement : MonoBehaviour
 
         // Sprite flip
         if (HorizontalInput > 0.01f)
-            transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+            flip();
+
         else if (HorizontalInput < -0.01f)
-            transform.localScale = new Vector3(-0.3f, 0.3f, 0.3f);
+            fliptrue();
 
         // Update coyote time
         if (isGrounded())
@@ -120,15 +124,15 @@ public class Playermovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isDashing) return; // don’t override dash velocity
-
-        rb.velocity = new Vector2(HorizontalInput * speed, rb.velocity.y);
+        if (isDashing) return;
+            run();
     }
 
     private void _Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, jump);
         coyoteTimeCounter = 0f;
+        dust.Play();
     }
 
     private bool isGrounded()
@@ -201,5 +205,25 @@ public class Playermovement : MonoBehaviour
         aiSr.sprite = sr.sprite; // copy current sprite
         aiSr.flipX = sr.flipX;   // copy facing direction
         aiSr.color = sr.color;   // match dash color
+    }
+    
+    private void flip()
+    {
+        sr.flipX = false;
+        if (isGrounded())
+            dust.Play();
+    }
+
+    private void fliptrue()
+    {
+        sr.flipX = true;
+        if(isGrounded())
+            dust.Play();
+    }
+
+    private void run()
+    {
+        rb.velocity = new Vector2(HorizontalInput * speed, rb.velocity.y);
+
     }
 }
