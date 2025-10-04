@@ -250,7 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1834929311350105816}
   speed: 15
-  jump: 25
+  jump: 27
   capsule: {fileID: 1834929311350105823}
   dust: {fileID: 493746564908761247}
   coyoteTime: 0.2
