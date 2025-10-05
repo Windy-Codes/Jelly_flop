@@ -54,7 +54,7 @@ public class Playermovement : MonoBehaviour
         if (isDashing)
         {
             HandleAfterimages();
-            return; // don’t run normal movement while dashing
+            return; // donï¿½t run normal movement while dashing
         }
 
         // --- INPUTS (Last Key Priority) ---
@@ -224,6 +224,6 @@ public class Playermovement : MonoBehaviour
     private void run()
     {
         rb.velocity = new Vector2(HorizontalInput * speed, rb.velocity.y);
-
+    
     }
 }
