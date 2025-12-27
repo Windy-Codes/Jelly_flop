@@ -20,6 +20,6 @@ A 2D parkour platformer made in Unity. You control a squishy jelly character wit
 
 ## 📦 Setup Instructions
 
-### 1. Clone the repo
+
 
 
